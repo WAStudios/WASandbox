@@ -1,0 +1,6 @@
+wasengine==1.0.11
+lupa
+gdown
+GitPython
+pyyaml
+pygame  # Or tkinter/pyqt5 depending on GUI choice

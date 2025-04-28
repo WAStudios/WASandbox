@@ -4,6 +4,7 @@
 __pycache__/
 
 # Don't upload these:
-libs/
+Libs/
 wase_data/
 WeakAuras2/
+WeakAuras2/WeakAuras/Libs/*

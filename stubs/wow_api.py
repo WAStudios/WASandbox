@@ -1,6 +1,6 @@
 # WAStudio/stubs/wow_api.py
 
-def inject_wow_api(lua_runtime):
+def register_wow_stubs(lua_runtime):
     lua_runtime.execute("""
     WeakAuras = WeakAuras or {}
     function GetAddOnMetadata(addon, field)

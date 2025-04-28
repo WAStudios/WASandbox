@@ -7,14 +7,26 @@ def inject_sandbox_stubs(lua_runtime):
     -- WeakAuras + Private globals
     _G.WeakAuras = _G.WeakAuras or {}
     WeakAuras = _G.WeakAuras
-    WeakAuras.Private = WeakAuras.Private or {}
+    WeakAuras.Private = WeakAuras.Private or {}    
     _G.Private = WeakAuras.Private
+    
+    WeakAuras.callbacks = WeakAuras.callbacks or {}
+    WeakAuras.callbacks.RegisterCallback = function(self, event, handler)
+        print("Stubbed WeakAuras.callbacks:RegisterCallback called for event:", event)
+    end
+    WeakAuras.Private.callbacks = WeakAuras.Private.callbacks or WeakAuras.callbacks
+    Private.callbacks = WeakAuras.Private.callbacks
+    
     WeakAuras.L = WeakAuras.L or {}
     WeakAuras.ExecEnv = WeakAuras.ExecEnv or {}
+    WeakAuras.Private.ExecEnv = WeakAuras.Private.ExecEnv or WeakAuras.ExecEnv
+    WeakAuras.frames = WeakAuras.frames or {}
+    Private.ExecEnv = WeakAuras.Private.ExecEnv
     _G.StaticPopupDialogs = _G.StaticPopupDialogs or {}
     StaticPopupDialogs = _G.StaticPopupDialogs
     _G.GetScreenWidth = function() return 1920 end
     _G.GetScreenHeight = function() return 1080 end
+
 
     math = math or {}
     math.min = math.min or function(a, b) if a < b then return a else return b end end
